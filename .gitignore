@@ -74,7 +74,3 @@ typings/
 
 # FuseBox cache
 .fusebox/
-
-# Docker
-Dockerfile
-.dockerignore
