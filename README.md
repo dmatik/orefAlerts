@@ -27,10 +27,45 @@ services:
         restart: unless-stopped
 ```
 
+### JSON Examples
+#### Example for /current endpoint
+```json
+{
+    "alert": "true",
+    "current": {
+        "data": [
+            "סעד",
+            "אשדוד - יא,יב,טו,יז,מרינה"
+        ],
+        "id": 1621242007417,
+        "title": "התרעות פיקוד העורף"
+    }
+}
+```
+#### Example for /last_day endpoint
+```json
+{
+    "lastDay": [
+        {
+            "data": "בטחה",
+            "date": "17.05.2021",
+            "time": "13:31",
+            "datetime": "2021-05-17T13:32:00"
+        },
+        {
+            "data": "גילת",
+            "date": "17.05.2021",
+            "time": "13:31",
+            "datetime": "2021-05-17T13:32:00"
+        }
+    ]
+}
+```
+
 ### Home-Assistant
 
 #### Sensors
-##### Fetch the current alert.
+##### Fetch the current alert
 ```yaml
 sensor:
   - platform: rest
@@ -44,7 +79,7 @@ sensor:
     timeout: 30
 ```
 
-##### Fetch the last day history alerts.
+##### Fetch the last day history alerts
 > **_NOTE:_** This responce is very long, while there is 255 characters limit in HA sensors. <br/>
 > Hence adding it to the attribute, which does not have such limit.
 ```yaml
