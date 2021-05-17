@@ -1,7 +1,9 @@
 # orefAlerts
  
 Node.js RESTful API to retrive Israeli [Pikud Ha-Oref](https://www.oref.org.il/) so called "Red Color" alerts. <br/>
-The project deployed on Ducker Hub as [dmatik/oref-alerts](https://hub.docker.com/r/dmatik/oref-alerts).
+The project deployed on Docker Hub as [dmatik/oref-alerts](https://hub.docker.com/r/dmatik/oref-alerts).
+
+<a href="https://www.buymeacoffee.com/bg7MaEJHc" target="_blank"><img height="41px" width="167px" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee"></a>
 
 ## Usage
 ### Run from hub
