@@ -27,9 +27,12 @@ services:
         restart: unless-stopped
 ```
 
-### Adding Sensors in Home-Assistant
-#### Fetch the current alert.
+### Home-Assistant
+
+#### Sensors
+##### Fetch the current alert.
 ```yaml
+sensor:
   - platform: rest
     resource: http://[YOUR_IP]:49000/current
     name: redalert
@@ -41,10 +44,11 @@ services:
     timeout: 30
 ```
 
-#### Fetch the last day history alerts.
+##### Fetch the last day history alerts.
 > **_NOTE:_** This responce is very long, while there is 255 characters limit in HA sensors. <br/>
 > Hence adding it to the attribute, which does not have such limit.
 ```yaml
+sensor:
   - platform: rest
     resource: http://[YOUR_IP]:49000/last_day
     name: redalert_history
@@ -54,3 +58,28 @@ services:
     scan_interval: 120
     timeout: 30
 ```
+
+#### Binary Sensors
+##### Indicator for all alerts
+```yaml
+binary_sensor:
+  - platform: template
+    sensors:
+      redalert_all:
+        friendly_name: "Redalert All"
+        value_template: >-
+          {{ state_attr('sensor.redalert', 'alert') == "true" }}
+```
+
+##### Indicator for specific alert
+```yaml
+binary_sensor:
+  - platform: template
+    sensors:
+      redalert_ashdod:
+        friendly_name: "Redalert Ashdod"
+        value_template: >-
+          {{ state_attr('sensor.redalert', 'alert') == "true" and 
+                    'אשדוד - יא,יב,טו,יז,מרינה' in state_attr('sensor.redalert', 'current')['data'] }}
+```
+
