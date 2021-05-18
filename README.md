@@ -27,7 +27,7 @@ services:
         restart: unless-stopped
 ```
 
-### JSON Examples
+### JSON Response Examples
 #### Example for /current endpoint
 ```json
 {
