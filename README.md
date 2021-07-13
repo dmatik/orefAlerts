@@ -9,7 +9,7 @@ The project deployed on Docker Hub as [dmatik/oref-alerts](https://hub.docker.co
 ### Run from hub
 #### docker run from hub
 ```text
-docker run -p 49000:3000 --name oref-alerts dmatik/oref-alerts:latest
+docker run -d -p 49000:3000 --name oref-alerts dmatik/oref-alerts:latest
 ```
 
 #### docker-compose from hub
@@ -22,8 +22,6 @@ services:
         network_mode: "bridge"
         ports:
           - 49000:3000
-        environment:
-            TZ: "Asia/Jerusalem"
         restart: unless-stopped
 ```
 
