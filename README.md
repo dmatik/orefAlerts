@@ -19,6 +19,7 @@ services:
     oref-alerts:
         image: dmatik/oref-alerts:latest
         container_name: oref-alerts
+        hostname: oref-alerts
         network_mode: "bridge"
         ports:
           - 49000:3000
