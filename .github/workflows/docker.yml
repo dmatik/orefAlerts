@@ -3,16 +3,21 @@
 name: Docker CI-CD
 
 # Controls when the action will run. 
+# on:
+#   # Triggers the workflow on push or pull request events but only for the main branch
+#   push:
+#     branches: [ main ]
+#     paths:
+#       - '**.js'
+#   pull_request:
+#     branches: [ main ]
+#     paths:
+#       - '**.js'
+
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-    paths:
-      - '**.js'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - '**.js'
+  release:
+    types: [published]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -51,6 +56,14 @@ jobs:
           with:
             username: ${{ secrets.Docker_username }}
             password: ${{ secrets.Docker_password }}
+
+        - name: Get current date
+          id: getDate
+          run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+        - name: Get semantic version from file
+          id: getSemver
+          run: echo "::set-output name=semver::$(cat VERSION | tr -d ' \t\n\r' )"
       
         - name: Build and push
           uses: docker/build-push-action@v2
@@ -58,6 +71,12 @@ jobs:
             context: ./
             file: ./Dockerfile
             push: true
-            tags: dmatik/oref-alerts:latest
             platforms: linux/amd64,linux/arm64,linux/arm/v7
+            tags: |
+              dmatik/oref-alerts:latest
+              dmatik/oref-alerts:${{ steps.getSemver.outputs.semver }}
+            build-args: |
+              VCS_REF=${{ github.sha }}
+              BUILD_DATE=${{ steps.getDate.outputs.date }}
+              VERSION=${{ steps.getSemver.outputs.semver }}
           
