@@ -34,9 +34,10 @@ jobs:
     - name: Login to Docker Hub
       run: docker login --username "${{ secrets.Docker_username }}" --password "${{ secrets.Docker_password }}"
     - name: Build the Docker Image 
-      run: docker build . --file Dockerfile --tag dmatik/oref-alerts
-    - name: Push the Docker Image 
-      run: docker push dmatik/oref-alerts
+      #run: docker build . --file Dockerfile --tag dmatik/oref-alerts
+      run: docker buildx build --file Dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t dmatik/oref-alerts:latest --push .
+    #- name: Push the Docker Image 
+    #  run: docker push dmatik/oref-alerts
       
 
       env:
