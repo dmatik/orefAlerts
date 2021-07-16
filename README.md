@@ -1,5 +1,5 @@
 # orefAlerts   
-[![maintenance]][2] [![last-commit]][2] [![docker-version]][1] [![docker-pulls]][1] [![image-size]][1]
+[![maintenance]][2] [![last-commit]][2]
  
 Node.js RESTful API to retrieve Israeli [Pikud Ha-Oref](https://www.oref.org.il/) so called "Red Color" alerts. <br/>
 The project deployed on Docker Hub as [dmatik/oref-alerts](https://hub.docker.com/r/dmatik/oref-alerts).
