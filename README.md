@@ -121,7 +121,7 @@ binary_sensor:
 [1]: https://hub.docker.com/r/dmatik/oref-alerts
 [2]: https://github.com/dmatik/orefAlerts
 <!-- Badges Links -->
-[maintenance]: https://img.shields.io/maintenance/yes/2021
+[maintenance]: https://img.shields.io/maintenance/no/2021
 [last-commit]: https://img.shields.io/github/last-commit/dmatik/orefAlerts
 [docker-pulls]: https://img.shields.io/docker/pulls/dmatik/oref-alerts?logo=docker
 [docker-version]: https://img.shields.io/docker/v/dmatik/oref-alerts?logo=docker
