@@ -1,3 +1,6 @@
+# DEPRECATED
+## Please use [oref-alerts-proxy-ms](https://github.com/dmatik/oref-alerts-proxy-ms/) instead.
+
 # orefAlerts   
 [![maintenance]][2] [![last-commit]][2]
  
